@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   title: "NeuralAI — AI-Powered Education & Career Platform",
   description:
     "NeuralAI builds AI-powered learning platforms, IT certifications, and study-abroad programs. Train for IELTS, PTE, TOEFL and modern tech careers.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
