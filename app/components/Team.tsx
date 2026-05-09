@@ -5,6 +5,9 @@ type Member = {
   name: string;
   role: string;
   photo: string;
+  linkedin: string;
+  email: string;
+  github: string;
 };
 
 const team: Member[] = [
@@ -12,16 +15,25 @@ const team: Member[] = [
     name: "Aashish Adhikari",
     role: "Founder & CEO",
     photo: "/aashishahikari.jpg",
+    linkedin: "https://www.linkedin.com/in/aashish-adhikari-96234b239",
+    email: "aashishad67@gmail.com",
+    github: "https://github.com/anonymousboy67",
   },
   {
     name: "Er. Bhagirath Aryal",
     role: "ML Engineer",
     photo: "/bhagiratharyal.jpg",
+    linkedin: "https://www.linkedin.com/in/bhagirath-aryal",
+    email: "bhagiratharyal2@gmail.com",
+    github: "https://github.com/Bhagirath369",
   },
   {
     name: "Sijan Bhusal",
     role: "Software Engineer",
     photo: "/sijanbhusal.jpg",
+    linkedin: "https://www.linkedin.com/in/sijan-bhusal07/",
+    email: "sijan.bhusal03@gmail.com",
+    github: "https://github.com/Sijan-Bhusal",
   },
 ];
 
@@ -76,7 +88,7 @@ export default function Team() {
                 {m.role}
               </p>
               <div className="mt-5 flex justify-center gap-2">
-                <Social href="#">
+                <Social href={m.linkedin}>
                   <svg
                     viewBox="0 0 24 24"
                     fill="currentColor"
@@ -85,16 +97,16 @@ export default function Team() {
                     <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm-9.5 15h-2.5V10h2.5v8ZM8.25 8.75A1.5 1.5 0 1 1 8.25 5.75a1.5 1.5 0 0 1 0 3ZM18 18h-2.5v-4.25c0-1-.5-1.75-1.5-1.75s-1.5.75-1.5 1.75V18H10v-8h2.5v1.25c.3-.7 1.2-1.5 2.5-1.5 1.8 0 3 1.2 3 3.5V18Z" />
                   </svg>
                 </Social>
-                <Social href="#">
+                <Social href={`mailto:${m.email}`}>
                   <svg
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     className="h-4 w-4"
                   >
-                    <path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.2-.8.5-1.7.8-2.6 1A4.1 4.1 0 0 0 12 9.1c0 .3 0 .6.1.9A11.6 11.6 0 0 1 3.4 4.9a4.1 4.1 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1a4.1 4.1 0 0 0 3.3 4 4 4 0 0 1-1.9.1 4.1 4.1 0 0 0 3.8 2.8 8.2 8.2 0 0 1-6 1.7A11.6 11.6 0 0 0 8.3 20c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2Z" />
+                    <path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 2-8 5-8-5h16Zm0 10H4V9.2l7.4 4.6c.4.2.8.2 1.2 0L20 9.2V17Z" />
                   </svg>
                 </Social>
-                <Social href="#">
+                <Social href={m.github}>
                   <svg
                     viewBox="0 0 24 24"
                     fill="currentColor"
