@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ReactNode } from "react";
 
 type Member = {
   name: string;
@@ -29,7 +30,7 @@ const Social = ({
   children,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => (
   <a
     href={href}
@@ -56,7 +57,7 @@ export default function Team() {
         {team.map((m) => (
           <article
             key={m.name}
-            className="ui-card overflow-hidden flex flex-col"
+            className="ui-card overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_40px_100px_-30px_rgba(122,44,18,0.45)]"
           >
             <div className="p-4 bg-[#f5e9d3]">
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl ring-1 ring-[#b89e8a]/30 shadow-sm bg-white">
