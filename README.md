@@ -1,6 +1,5 @@
 # NeuralAI
-
-NeuralAI is a Kathmandu-based company that combines AI with real teaching to make education more affordable and accessible. We build AI-powered software, run tech bootcamps and language coaching, and guide students through study abroad applications.
+NeuralAI is a company that integrates AI with real teaching to make education more affordable and accessible. We build AI-powered software, run tech bootcamps and language coaching, and guide students through study abroad applications.
 
 ## What we do
 
