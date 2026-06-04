@@ -76,13 +76,13 @@ export default function Services() {
       id="services"
       className="ui-poppins bg-white text-[#1f1410] pt-20 md:pt-24 pb-20 md:pb-24 px-4 md:px-16 lg:px-24 xl:px-32"
     >
-      <div className="text-center">
+      <div className="max-w-2xl">
         <span className="ui-pill">Services</span>
-        <h2 className="text-4xl md:text-6xl font-medium max-w-[720px] mx-auto mt-6 leading-[1.1]">
+        <h2 className="text-4xl md:text-6xl font-medium mt-6 leading-[1.1]">
           What we offer.
         </h2>
-        <p className="text-sm md:text-base mx-auto max-w-xl mt-5 text-[#1f1410]/70 max-md:px-2">
-          Four areas we focus on.
+        <p className="text-sm md:text-base max-w-lg mt-5 text-[#1f1410]/70">
+          We build software, run training, and help students study abroad. Four areas, one team.
         </p>
       </div>
 
