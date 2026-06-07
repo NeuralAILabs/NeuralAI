@@ -1,5 +1,9 @@
+'use client';
+
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
+import InteractiveTeamProfile from "./InteractiveTeamProfile";
 
 type Member = {
   name: string;
@@ -21,7 +25,7 @@ const team: Member[] = [
   },
   {
     name: "Er. Bhagirath Aryal",
-    role: "ML Engineer",
+    role: "ML Engineer Intern",
     photo: "/bhagiratharyal.jpg",
     linkedin: "https://www.linkedin.com/in/bhagirath-aryal",
     email: "bhagiratharyal2@gmail.com",
@@ -29,11 +33,35 @@ const team: Member[] = [
   },
   {
     name: "Sijan Bhusal",
-    role: "Software Engineer",
+    role: "Software Engineer Intern",
     photo: "/sijanbhusal.jpg",
     linkedin: "https://www.linkedin.com/in/sijan-bhusal07/",
     email: "sijan.bhusal03@gmail.com",
     github: "https://github.com/Sijan-Bhusal",
+  },
+];
+
+type TeamProfile = {
+  initials: string;
+  bio: string;
+  techStack: string[];
+};
+
+const teamProfiles: TeamProfile[] = [
+  {
+    initials: "AA",
+    bio: "Passionate about building scalable AI solutions and leading innovative teams. Focused on bridging the gap between research and production systems.",
+    techStack: ["React", "Node.js", "Python", "TensorFlow", "AWS"],
+  },
+  {
+    initials: "BA",
+    bio: "ML Engineer with a strong foundation in deep learning and neural networks. Experienced in implementing cutting-edge AI models for real-world applications.",
+    techStack: ["TensorFlow", "PyTorch", "Python", "Scikit-learn", "OpenCV"],
+  },
+  {
+    initials: "SB",
+    bio: "Full-stack software engineer passionate about creating beautiful and functional user interfaces. Specialized in modern React and Next.js development.",
+    techStack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
   },
 ];
 
@@ -45,9 +73,12 @@ function Social({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
-function TeamCard({ m }: { m: Member }) {
+function TeamCard({ m, index, onSelect }: { m: Member; index: number; onSelect: (index: number) => void }) {
   return (
-    <article className="ui-card overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_40px_100px_-30px_rgba(122,44,18,0.45)]">
+    <article
+      className="ui-card overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_40px_100px_-30px_rgba(122,44,18,0.45)] cursor-pointer"
+      onClick={() => onSelect(index)}
+    >
       <div className="p-4 bg-[#f5e9d3]">
         <div className="relative aspect-[4/5] overflow-hidden rounded-xl ring-1 ring-[#b89e8a]/30 shadow-sm bg-white">
           <Image src={m.photo} alt={`${m.name} portrait`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
@@ -79,15 +110,26 @@ function TeamCard({ m }: { m: Member }) {
 }
 
 export default function Team() {
+  const [selectedMemberIndex, setSelectedMemberIndex] = useState<number | null>(null);
+
   return (
     <section id="team" className="ui-poppins bg-[#fdfaf3] text-[#1f1410] pt-20 md:pt-24 pb-20 md:pb-24 px-4 md:px-16 lg:px-24 xl:px-32">
-      <div>
-        <span className="ui-pill">Team</span>
-        <h2 className="text-4xl md:text-6xl font-medium mt-6 leading-[1.1]">Meet the team.</h2>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-14 max-w-5xl mx-auto">
-        {team.map((m) => (<TeamCard key={m.name} m={m} />))}
-      </div>
+      <ScrollReveal variant="fade-up">
+        <div>
+          <span className="ui-pill">Team</span>
+          <h2 className="text-4xl md:text-6xl font-medium mt-6 leading-[1.1]">Meet the team.</h2>
+        </div>
+      </ScrollReveal>
+      <StaggerContainer staggerDelay={0.08} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-14 max-w-5xl mx-auto">
+        {team.map((m, index) => (<StaggerItem key={m.name}><TeamCard m={m} index={index} onSelect={setSelectedMemberIndex} /></StaggerItem>))}
+      </StaggerContainer>
+
+      {selectedMemberIndex !== null && (
+        <InteractiveTeamProfile
+          member={{ ...team[selectedMemberIndex], ...teamProfiles[selectedMemberIndex] }}
+          onClose={() => setSelectedMemberIndex(null)}
+        />
+      )}
     </section>
   );
 }
