@@ -1,71 +1,174 @@
-import Image from "next/image";
+'use client';
 
-type Product = {
+import { ArrowRight } from "lucide-react";
+import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
+
+export type Product = {
+  id: string;
   title: string;
-  category: string;
-  body: string;
-  image: string;
-  alt: string;
-  href: string;
+  badge: string;
+  description: string;
+  stats: { label: string; value: string }[];
+  url: string;
 };
 
 const products: Product[] = [
   {
+    id: "ielts-buddy",
     title: "IeltsBuddy",
-    category: "Test Prep",
-    body: "An AI-powered IELTS preparation platform built for students aiming at universities in the US, UK, Australia and Canada.",
-    image: "/ieltsbuddy.png",
-    alt: "IeltsBuddy product screenshot",
-    href: "https://www.ieltsbuddy.app/",
+    badge: "TEST PREP",
+    description: "An AI-powered IELTS preparation platform built for students aiming at universities in the US, UK, Australia and Canada.",
+    stats: [
+      { label: "Active Users", value: "400+" },
+      { label: "AI Evaluations", value: "32,000+" },
+      { label: "Avg. Improvement", value: "+1.5 Bands" },
+    ],
+    url: "https://www.ieltsbuddy.app/",
   },
   {
+    id: "digital-sewa",
     title: "Digital Sewa",
-    category: "Marketplace",
-    body: "Nepal's local freelancing platform — connecting clients with skilled service providers across the country.",
-    image: "/digitalsewa.png",
-    alt: "Digital Sewa product screenshot",
-    href: "https://digitalsewav3.vercel.app/",
+    badge: "MARKETPLACE",
+    description: "Nepal's local freelancing platform, connecting clients with skilled service providers across the country.",
+    stats: [
+      { label: "Verified Pros", value: "10+" },
+      { label: "Client Matches", value: "30+" },
+      { label: "Platform Fee", value: "0% Free to Use" },
+    ],
+    url: "https://digitalsewav3.vercel.app/",
   },
 ];
 
-function ProductCard({ p }: { p: Product }) {
+function BrowserChrome({ url }: { url: string }) {
   return (
-    <article className="group relative rounded-3xl bg-white/55 backdrop-blur-2xl border border-white/70 shadow-[0_30px_80px_-30px_rgba(31,20,16,0.35)] hover:shadow-[0_40px_100px_-30px_rgba(122,44,18,0.45)] transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/60 via-transparent to-transparent" />
-      <div className="relative p-5 md:p-6">
-        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden ring-1 ring-white/80 shadow-[0_18px_40px_-12px_rgba(31,20,16,0.25)] bg-white">
-          <Image src={p.image} alt={p.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
-        </div>
+    <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center gap-1.5">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-400 inline-block" />
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block" />
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block" />
+        <span className="text-[10px] text-[#18181B]/40 font-mono ml-2">{url}</span>
       </div>
-      <div className="relative px-7 pt-2 pb-7 flex flex-col">
-        <span className="text-xs font-medium uppercase tracking-[0.14em] text-[#b0421a]">{p.category}</span>
-        <h3 className="mt-2 text-2xl font-medium">{p.title}</h3>
-        <p className="mt-3 text-sm md:text-base text-[#1f1410]/75 leading-relaxed">{p.body}</p>
-        <a href={p.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[#b0421a] hover:gap-2.5 transition-all w-max">
-          Visit {p.title}
-          <svg width="16" height="16" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-            <path d="M3.959 9.5h11.083m0 0L9.501 3.958M15.042 9.5l-5.541 5.54" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-      </div>
-    </article>
+      <span className="text-[10px] font-bold text-[#18181B]/40 uppercase bg-[#18181B]/5 px-2 py-0.5 rounded-md">secure</span>
+    </div>
   );
 }
 
-export default function Portfolio() {
+function IeltsMockup() {
   return (
-    <section id="portfolio" className="ui-poppins relative overflow-hidden text-[#1f1410] pt-20 md:pt-24 pb-24 md:pb-28 px-4 md:px-16 lg:px-24 xl:px-32">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-[#fdfaf3] via-[#f7eddc] to-[#fdfaf3]" />
-      <div aria-hidden className="absolute -z-10 -top-32 -left-24 h-96 w-96 rounded-full bg-[#b0421a]/30 blur-3xl" />
-      <div aria-hidden className="absolute -z-10 top-40 -right-24 h-[28rem] w-[28rem] rounded-full bg-[#d97a3f]/25 blur-3xl" />
-      <div aria-hidden className="absolute -z-10 bottom-0 left-1/3 h-80 w-80 rounded-full bg-[#f5e9d3]/70 blur-3xl" />
-      <div className="relative max-w-2xl">
-        <span className="ui-pill backdrop-blur-md bg-white/40 border-white/60">Products</span>
-        <h2 className="text-4xl md:text-6xl font-medium mt-6 leading-[1.1]">What we&rsquo;ve built.</h2>
-        <p className="text-sm md:text-base max-w-xl mt-5 text-[#1f1410]/70">Shipping real products — an AI IELTS coach and Nepal&rsquo;s local freelancing platform.</p>
+    <div className="flex-1 flex gap-4 mt-2 overflow-hidden relative">
+      <div className="w-3/5 bg-white border border-[#E2DDD5]/80 rounded-xl p-4 shadow-sm space-y-3 flex flex-col justify-between">
+        <span className="text-[9px] font-extrabold text-[#0F766E] uppercase tracking-widest bg-[#0F766E]/5 px-2 py-0.5 rounded-sm inline-block">
+          AI Feedback Engine
+        </span>
+        <h6 className="font-serif font-bold text-sm text-[#18181B] pr-2 line-clamp-2">
+          Achieve your target IELTS band with AI-powered feedback
+        </h6>
+        <div className="text-[9px] bg-[#FAF8F5] text-[#18181B]/60 p-2 rounded border border-[#E2DDD5]/50 whitespace-nowrap overflow-hidden text-ellipsis">
+          &ldquo;Sentence is strongly cohesive; consider using complex lexical terms...&rdquo;
+        </div>
       </div>
-      <div className="relative grid md:grid-cols-2 gap-8 md:gap-10 mt-16">
-        {products.map((p) => (<ProductCard key={p.title} p={p} />))}
+      <div className="w-2/5 bg-white border border-[#E2DDD5]/80 rounded-xl p-3 shadow-sm flex flex-col items-center justify-center space-y-2">
+        <div className="w-14 h-14 bg-[#0F766E]/10 rounded-full flex items-center justify-center font-serif font-black text-xl text-[#0F766E] border border-[#0F766E]/20">
+          7.5
+        </div>
+        <div className="text-[9px] text-[#18181B]/50 text-center font-bold">Estimated Band Score</div>
+      </div>
+    </div>
+  );
+}
+
+function DigitalSewaMockup() {
+  return (
+    <div className="flex-1 bg-white border border-[#E2DDD5]/80 rounded-xl mt-2 p-4 shadow-sm space-y-3 flex flex-col justify-between">
+      <div className="p-3 bg-[#075D66] text-white rounded-lg flex justify-between items-center">
+        <div>
+          <h6 className="font-bold text-xs">Find Local Trust. Build Local Talent.</h6>
+          <p className="text-[8px] text-white/80">Connect with Nepal&apos;s local certified freelancers</p>
+        </div>
+        <span className="text-[9px] uppercase bg-white/10 px-2 py-0.5 rounded-sm">0% Comm</span>
+      </div>
+      <div className="text-[9px] flex justify-between items-center bg-[#FAF8F5] p-2 border border-[#E2DDD5]/50 rounded-lg">
+        <span className="font-extrabold text-[#18181B]">Kiran Shrestha (React Expert)</span>
+        <span className="text-amber-500 font-bold">★ 4.9 (Kathmandu)</span>
+      </div>
+    </div>
+  );
+}
+
+function ProductCard({ p, onViewDemo }: { p: Product; onViewDemo?: (p: Product) => void }) {
+  return (
+    <div className="bg-white border border-[#E2DDD5]/80 rounded-2xl overflow-hidden shadow-sm flex flex-col h-full">
+      <div className="p-6 bg-[#FAF8F5] border-b border-[#E2DDD5]/40 h-64 flex flex-col select-none">
+        <BrowserChrome url={`${p.id}.neuralai.in`} />
+        {p.id === "ielts-buddy" ? <IeltsMockup /> : <DigitalSewaMockup />}
+      </div>
+
+      <div className="p-8 space-y-6 flex-1 flex flex-col justify-between">
+        <div className="space-y-3">
+          <span className="text-[11px] font-bold text-[#b0421a] uppercase tracking-wider bg-[#b0421a]/5 px-2.5 py-1 rounded-sm inline-block">
+            {p.badge}
+          </span>
+          <h3 className="text-2xl font-bold font-serif text-[#18181B]">{p.title}</h3>
+          <p className="text-sm text-[#18181B]/70 leading-relaxed">{p.description}</p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 border-t border-b border-[#E2DDD5]/50 py-4">
+          {p.stats.map((st, i) => (
+            <div key={i} className="text-center md:text-left">
+              <div className="text-xs text-[#18181B]/40 font-medium tracking-wide uppercase">{st.label}</div>
+              <div className="text-[15px] font-bold text-[#18181B]/80 mt-0.5">{st.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="pt-2 flex items-center justify-between gap-4">
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-bold text-[#b0421a] hover:text-[#7a2c12] inline-flex items-center gap-1.5 transition-colors group"
+          >
+            Visit {p.title} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+          {onViewDemo && (
+            <button
+              onClick={() => onViewDemo(p)}
+              className="px-4 py-1.5 border border-[#0F766E]/20 hover:border-[#0F766E] bg-[#0F766E]/[0.03] text-[#0F766E] hover:bg-[#0F766E]/5 text-xs font-bold rounded-lg transition-all"
+            >
+              ⚡ Try Interactive Demo
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Portfolio({ onViewDemo }: { onViewDemo?: (p: Product) => void }) {
+  return (
+    <section id="products" className="ui-poppins py-24 px-6 md:px-16 bg-[#FAF8F5]/80 relative z-10">
+      <div className="max-w-7xl mx-auto space-y-16">
+        <ScrollReveal variant="fade-up">
+          <div className="space-y-4 max-w-2xl">
+            <span className="inline-block px-3 py-1 rounded-full border border-[#E2DDD5] text-xs font-semibold text-[#18181B]/60 bg-white">
+              Products
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#18181B] font-serif">
+              What we&apos;ve built.
+            </h2>
+            <p className="text-[#18181B]/60 text-sm md:text-base leading-relaxed">
+              Shipping real products, an AI IELTS coach and Nepal&apos;s local freelancing platform.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <StaggerContainer staggerDelay={0.12} className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {products.map((p) => (
+            <StaggerItem key={p.id} className="flex flex-col h-full">
+              <ProductCard p={p} onViewDemo={onViewDemo} />
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );

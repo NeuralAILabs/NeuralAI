@@ -258,6 +258,20 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.08); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.grid-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, #e2d5c0 1px, transparent 1px);
+}
+
 /* subtle grain texture — adds analog feel */
 .grain {
   position: relative;

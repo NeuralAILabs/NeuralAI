@@ -21,7 +21,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "NeuralAI — AI-Powered Education & Career Platform",
+  title: "NeuralAI: AI-Powered Education & Career Platform",
   description:
     "NeuralAI builds AI-powered learning platforms, IT certifications, and study-abroad programs. Train for IELTS, PTE, TOEFL and modern tech careers.",
   icons: {

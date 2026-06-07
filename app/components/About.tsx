@@ -1,72 +1,91 @@
-const values = [
+import { Check } from "lucide-react";
+import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
+
+const principles = [
   {
     title: "Practical first",
-    body: "Every course, tool and product is judged on one thing — does it help a learner reach their next step?",
+    description: "Every course, tool and product is judged on one thing, does it help a learner reach their next step?",
   },
   {
     title: "Honest pricing",
-    body: "Transparent fees and no hidden upsells. We'd rather earn trust than push a sale.",
+    description: "Transparent fees and no hidden upsells. We'd rather earn trust than push a sale.",
   },
   {
     title: "Built locally",
-    body: "Designed for Nepali students, then taken global — our products work in the contexts our users actually live in.",
+    description: "Designed for Nepali students, then taken global, our products work in the contexts our users actually live in.",
   },
   {
     title: "Always learning",
-    body: "We're a small team and we move fast. Feedback from learners shapes what we build next.",
+    description: "We're a small team and we move fast. Feedback from learners shapes what we build next.",
   },
 ];
 
-function ValueCard({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="ui-card p-6">
-      <div className="flex items-start gap-4">
-        <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#f5e9d3] text-[#b0421a]">
-          <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5">
-            <path d="m4 10 4 4 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
-        <div>
-          <p className="text-lg font-medium">{title}</p>
-          <p className="text-sm text-[#1f1410]/70 mt-1 leading-relaxed">{body}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AboutValues() {
-  return (
-    <div className="mt-16 max-w-5xl mx-auto">
-      <div>
-        <span className="ui-pill">What we believe</span>
-        <h3 className="text-2xl md:text-3xl font-medium mt-4">Four principles that guide our work.</h3>
-      </div>
-      <div className="grid md:grid-cols-2 gap-6 mt-10">
-        {values.map((v) => (<ValueCard key={v.title} title={v.title} body={v.body} />))}
-      </div>
-    </div>
-  );
-}
-
 export default function About() {
   return (
-    <section id="about" className="ui-poppins bg-white text-[#1f1410] pt-20 md:pt-24 pb-20 md:pb-24 px-4 md:px-16 lg:px-24 xl:px-32">
-      <div className="max-w-2xl">
-        <span className="ui-pill">About</span>
-        <h2 className="text-4xl md:text-6xl font-medium mt-6 leading-[1.1]">About NeuralAI.</h2>
-        <p className="text-sm md:text-base max-w-xl mt-5 text-[#1f1410]/70">A small team in Kathmandu, helping people learn and reach their goals.</p>
+    <section id="about" className="ui-poppins py-24 px-6 md:px-16 bg-white border-t border-b border-[#E2DDD5]/50 relative z-10">
+      <div className="max-w-7xl mx-auto space-y-16">
+
+        <ScrollReveal variant="fade-up">
+          <div className="space-y-4 max-w-2xl">
+            <span className="inline-block px-3 py-1 rounded-full border border-[#E2DDD5] text-xs font-semibold text-[#18181B]/60 bg-[#FAF8F5]">
+              About
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#18181B] font-serif">
+              About NeuralAI.
+            </h2>
+            <p className="text-[#18181B]/60 text-sm md:text-base leading-relaxed">
+              A small team in Kathmandu, helping people learn and reach their goals.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={0.1}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 text-sm md:text-[15px] text-[#18181B]/70 leading-relaxed border-b border-[#E2DDD5]/50 pb-16">
+            <div className="lg:col-span-5 font-serif text-[17px] md:text-[21px] text-[#A53C1B] font-medium leading-relaxed pr-6 italic">
+              &ldquo;NeuralAI started with a simple idea: use AI with real teaching to make education better and more affordable. We built an AI IELTS coach first for students who couldn&rsquo;t pay for expensive prep courses, then grew from there.&rdquo;
+            </div>
+            <div className="lg:col-span-7 space-y-6">
+              <p>
+                Today we work in three main areas. We build software like AI apps, mobile apps, and learning platforms for schools. We teach and certify through bootcamps, IT courses, and language coaching. We also guide students with study abroad applications, scholarships, and visa support.
+              </p>
+              <div className="flex gap-4 p-4 border-l-2 border-[#0F766E] bg-[#FAF8F5] rounded-r-xl">
+                <span className="text-xs uppercase bg-[#0F766E]/10 text-[#0F766E] px-2 py-1 h-fit font-bold rounded shrink-0">
+                  Location
+                </span>
+                <p className="text-xs text-[#18181B]/60 leading-normal">
+                  Our headquarters is positioned in New Baneswor, Kathmandu, allowing tactile accessibility to university applicants and software innovators directly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <div className="space-y-10">
+          <ScrollReveal variant="fade-up">
+            <div className="space-y-2">
+              <span className="text-[11px] font-bold text-[#0F766E] uppercase tracking-widest">What we believe</span>
+              <h3 className="text-2xl md:text-3xl font-bold font-serif text-[#18181B]">Four principles that guide our work.</h3>
+            </div>
+          </ScrollReveal>
+
+          <StaggerContainer staggerDelay={0.06} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {principles.map((pr) => (
+              <StaggerItem key={pr.title}>
+                <div className="bg-[#FAF8F5] p-6 h-full border border-[#E2DDD5]/70 flex flex-col justify-start space-y-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-5 h-5 rounded-full bg-orange-100 border border-orange-200 flex items-center justify-center text-[#b0421a] shrink-0">
+                      <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                    </div>
+                    <h4 className="font-bold text-[15px] font-serif tracking-tight">{pr.title}</h4>
+                  </div>
+                  <p className="text-[13px] text-[#18181B]/60 leading-relaxed">{pr.description}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+
       </div>
-      <div className="mt-14 max-w-3xl mx-auto space-y-5 text-base md:text-lg leading-relaxed text-[#1f1410]/80">
-        <p>
-          <span className="text-[#b0421a] font-bold">NeuralAI </span> started with a simple idea: use AI with real teaching to make education better and more affordable. We built an AI IELTS coach first for students who couldn&rsquo;t pay for expensive prep courses, then grew from there.
-        </p>
-        <p>
-          Today we work in three main areas. We <span>build software</span> like AI apps, mobile apps, and learning platforms for schools. We <span>teach and certify</span> through bootcamps, IT courses, and language coaching. We also <span>guide students</span> with study abroad applications, scholarships and visa support.
-        </p>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-14 max-w-4xl mx-auto" />
-      <AboutValues />
     </section>
   );
 }
